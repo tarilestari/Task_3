@@ -24,6 +24,27 @@ void insert_after(list *L, address p, address s)
     next(q)=p;
 }
 
+void insert_last(list *L,address p)
+{
+    address q;
+
+    q=(*L).first;
+    while(next(q)!=NULL)
+    {
+        q=next(q);
+    }
+    next(p)=NULL;
+    next(q)=p;
+}
+
+void delete_first(list *L,address *p)
+{
+    *p=(*L).first;
+    (*L).first=next((*L).first);
+    next(*p)=NULL;
+    delete p;
+}
+
 void view_data(list L)
 {
     address q;
