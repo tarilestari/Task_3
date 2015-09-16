@@ -10,6 +10,21 @@ address allocate (infotype a)
     return p;
 }
 
+void insert_first (list *L, address p)
+{
+    if((*L).first==NULL)
+    {
+        (*L).first=p;
+        next((*L).first)=NULL;
+    }
+    else
+    {
+        next(p)=NULL;
+        next(p)=(*L).first;
+        (*L).first=p;
+    }
+}
+
 void insert_after(list *L, address p, address s)
 {
     address q;
@@ -22,6 +37,20 @@ void insert_after(list *L, address p, address s)
     next(p)=NULL;
     next(p)=next(q);
     next(q)=p;
+}
+
+void delete_last(list *L,address *p)
+{
+    address q;
+
+    q=(*L).first;
+    while(next(next(q))!=NULL)
+    {
+        q=next(q);
+    }
+    *p=next(q);
+    next(q)=NULL;
+    delete p;
 }
 
 void view_data(list L)
